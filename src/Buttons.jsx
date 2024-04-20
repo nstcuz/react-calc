@@ -16,11 +16,14 @@ const Buttons = ({ displayText, setDisplayText, operandA, setOperandA, setOperan
       case 'enter':
         doResult();
         break;
+      case 'clear':
+        doClear(buttonInfo.value);
+        break;
       case'':
     }
   }
 
-  function doOperators(value) {
+  function doOperators(value) { // doOperators
     if(!operator){
       setOperator(value)
     }
@@ -31,7 +34,10 @@ const Buttons = ({ displayText, setDisplayText, operandA, setOperandA, setOperan
     setDisplayText(value)
   }
 
-  function doNumbers(value){
+
+
+
+  function doNumbers(value){ // doNums
     // if no value has been set, update operandA
    if(!operandA && !operator && !operandB){
     setOperandA(value);
@@ -72,6 +78,35 @@ const Buttons = ({ displayText, setDisplayText, operandA, setOperandA, setOperan
   // }
 }
 
+
+
+function doClear(value){//doClear
+  if(value === 'All Clear'){
+  setDisplayText(0);
+  setOperandA(null);
+  setOperandB(null);
+  setOperator(null);
+  } else if(operandA && !operandB){
+    setDisplayText(0);
+    setOperandA(null);
+  } else { //if(operandB) 
+    setDisplayText(0);
+    setOperandB(null);
+  }
+}
+
+
+  function doResult(){ // doResult
+    if(operandA && operandB && operator){
+      const answer = whichOperator(operandA, operandB, operator);
+      setDisplayText(parseFloat(answer));
+      setOperandA(answer);
+      setOperandB(null);
+      setOperator(null);
+      console.log(answer);
+    }
+  }
+
     function whichOperator(operandA, operandB, operator){
     const numA = parseFloat(operandA);
     const numB = parseFloat(operandB);
@@ -95,16 +130,18 @@ const Buttons = ({ displayText, setDisplayText, operandA, setOperandA, setOperan
     }
   }
   
-  function doResult(){
-    if(operandA && operandB && operator){
-      const answer = whichOperator(operandA, operandB, operator);
-      setDisplayText(parseFloat(answer));
-      setOperandA(answer);
-      setOperandB(null);
-      setOperator(null);
-      console.log(answer);
-    }
-  }
+
+
+
+
+
+
+
+
+
+
+
+
 
   return (
     <div className='button-container'>
