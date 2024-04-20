@@ -1,0 +1,65 @@
+.button-container{
+    display: grid;
+    gap: 0.125rem;
+    max-width: 40rem;
+    border-radius: 4px; 
+    cursor: pointer;
+
+    .ac { grid-area: ac; }
+    .c { grid-area: c; }
+    .ms { grid-area: ms; }
+    .mc { grid-area: mc; }
+    .mr { grid-area: mr; }
+    .m-minus { grid-area: m-minus; }
+    .m-plus { grid-area: m-plus; }
+    .seven { grid-area: seven; }
+    .eight { grid-area: eight; }
+    .nine { grid-area: nine; }
+    .four { grid-area: four; }
+    .five { grid-area: five; }
+    .six { grid-area: six; }
+    .one { grid-area: one; }
+    .two { grid-area: two; }
+    .three { grid-area: three; }
+    .zero { grid-area: zero; }
+    .decimal { grid-area: decimal; }
+    .sign { grid-area: sign; }
+    .percent { grid-area: percent; }
+    .square-root { grid-area: square-root; }
+    .multiply { grid-area: multiply; }
+    .divide { grid-area: divide; }
+    .add { grid-area: add; }
+    .subtract { grid-area: subtract; }
+    .equal { grid-area: equal; }
+
+    grid-template-areas: 
+    "ac c ms mc mr"
+    "m-plus seven eight nine divide"
+    "m-minus four five six multiply"
+    "decimal one two three add"
+    "sign zero zero zero subtract"
+    "percent square-root equal equal equal";
+
+    button {
+        padding: 0.5rem;
+        font-size: 1.25rem;
+        box-shadow: 2px 2px 1px grey; 
+    }
+
+    button[type='number'] {
+        background-color: aliceblue;
+    }
+
+    button[type='operator'], button[type='enter'] {
+        background-color: #f0f0f0;
+        font-weight: bold;
+    }
+
+    button[type='clear'], button[type='memory'] {
+        background-color: lightcoral;
+    }
+
+    button[type='sign'], button[type='decimal'] {
+        background-color: lightgreen;
+    }
+}
